@@ -77,7 +77,7 @@
         <p>Everything in between should also be set to checked</p>
       </div>
       <div class="item">
-        <input type="checkbox" />
+        <input type="checkbox" id="library" />
         <p>Try to do it without any libraries</p>
       </div>
       <div class="item">
@@ -95,7 +95,39 @@
     </div>
 
     <script>
-      const checkBoxes = document.querySelectorAll('input');
+      const checkBoxes = document.querySelectorAll(
+        '.inbox input[type="checkbox"]'
+      );
+
+      // We need to make the the lastChecked store in variable
+      let lastChecked;
+      function handleClick(e) {
+        // check if they had the shift key down
+        // and check if they are checking it
+        console.dir(this);
+        console.log(this.checked);
+        let inBetween = false;
+        if (e.shiftKey && this.checked) {
+          // go ahead and do what we please
+          // loop every single check box
+          checkBoxes.forEach((checkbox) => {
+            console.log(checkbox);
+            if (checkbox === this || checkbox === lastChecked) {
+              inBetween = !inBetween;
+              console.log('Starting to check them in between');
+            }
+
+            if (inBetween) {
+              checkbox.checked = true;
+            }
+          });
+        }
+        lastChecked = this;
+      }
+
+      checkBoxes.forEach((checkbox) =>
+        checkbox.addEventListener('click', handleClick)
+      );
     </script>
   </body>
 </html>
