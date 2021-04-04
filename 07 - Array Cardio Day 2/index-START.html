@@ -66,6 +66,69 @@
       console.table(spreadArray);
       console.table(comments);
       console.table(newComments);
+
+      const lineItemsArray = [
+        {
+          id: 'item_7RyWOwmK5nEa2V',
+          product_id: 'prod_Op1YoVag1wXLv9',
+          name: 'Whey Protein',
+          product_name: 'Whey Protein',
+          media: {
+            type: 'image',
+            source:
+              'https://cdn.chec.io/merchants/25227/assets/7URsLkypoLSSXFF1|87819623-whey-protein-powder-in-measuring-scoop-bodybuilding-nutrition-supplements-.jpeg',
+          },
+          sku: null,
+          permalink: 'W9jovA',
+          quantity: 1,
+          price: {
+            raw: 40,
+            formatted: '40.00',
+            formatted_with_symbol: '$40.00',
+            formatted_with_code: '40.00 USD',
+          },
+          line_total: {
+            raw: 40,
+            formatted: '40.00',
+            formatted_with_symbol: '$40.00',
+            formatted_with_code: '40.00 USD',
+          },
+          is_valid: true,
+          tax: {
+            is_taxable: false,
+            taxable_amount: null,
+            amount: null,
+            breakdown: null,
+          },
+          selected_options: [],
+          variant: [],
+        },
+      ];
+
+      //     //Map to this:  "line_items": {
+      //     "item_7RyWOwmK5nEa2V": {
+      //         "quantity": 1,
+      //         "variants": {
+      //             "vrnt_p6dP5g0M4ln7kA": "optn_DeN1ql93doz3ym"
+      //         }
+      //     }
+      // }
+
+      const convertArrayToObject = (array, key) => {
+        const initialValue = {};
+        return array.reduce((obj, item) => {
+          return {
+            ...obj,
+            [item[key]]: item,
+          };
+        }, initialValue);
+      };
+
+      const newObject = convertArrayToObject(lineItemsArray, 'id');
+
+      console.log(lineItemsArray);
+
+      console.log(newObject);
     </script>
   </body>
 </html>
