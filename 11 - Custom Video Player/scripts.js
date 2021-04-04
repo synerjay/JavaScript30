@@ -50,6 +50,15 @@ function handleProgress() {
   // this will correspond to the currentTime of the time over the duration
 }
 
+function scrub(e) {
+  // progress bar width is found in the progress.offsetWidth
+  //e.offsetX is the position of the click event on the progress bar
+  console.dir(progress);
+  const scrubTime = (e.offsetX / progress.offsetWidth) * video.duration;
+  video.currentTime = scrubTime;
+  console.log(e);
+}
+
 // Step3: Hook up the event listeners:
 video.addEventListener('click', togglePlay);
 video.addEventListener('play', updateButton);
@@ -65,3 +74,9 @@ ranges.forEach((range) => range.addEventListener('change', handleRangeUpdate));
 ranges.forEach((range) =>
   range.addEventListener('mousemove', handleRangeUpdate)
 );
+
+let mousedown = false;
+progress.addEventListener('click', scrub);
+progress.addEventListener('mousemove', (e) => mousedown && scrub(e));
+progress.addEventListener('mousedown', () => (mousedown = true));
+progress.addEventListener('mouseup', () => (mousedown = false));
