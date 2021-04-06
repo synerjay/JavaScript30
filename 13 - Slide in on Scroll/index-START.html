@@ -250,6 +250,8 @@
             window.scrollY + window.innerHeight - slideImage.height / 2;
           // bottom of the image
           const imageBottom = slideImage.offsetTop + slideImage.height;
+
+          //Conditional Constants
           const isHalfShown = slideInAt > slideImage.offsetTop;
           const isNotScrolledPast = window.scrollY < imageBottom;
           if (isHalfShown && isNotScrolledPast) {
