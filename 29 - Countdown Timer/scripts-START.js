@@ -1,4 +1,5 @@
 let countdown;
+const timerDisplay = document.querySelector('.display__time-left');
 
 function timer(seconds) {
   const now = Date.now();
@@ -18,5 +19,12 @@ function timer(seconds) {
 }
 
 function displayTimeLeft(seconds) {
-  console.log(seconds);
+  const minutes = Math.floor(seconds / 60); // round to the lower end and ignores the decimal
+  const remainderSeconds = seconds % 60; // how many seconds are left if all the minutes are divided equally
+  const display = `${minutes}:${
+    remainderSeconds < 10 ? '0' : ''
+  }${remainderSeconds}`; // this is so we can have  1:09 instead of 1:9
+  timerDisplay.textContent = display;
+  document.title = display;
+  console.log({ minutes, remainderSeconds });
 }
