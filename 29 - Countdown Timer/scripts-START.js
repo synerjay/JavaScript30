@@ -54,3 +54,11 @@ function startTimer() {
 
 // querySelectorAll always gives us an array and so we can use the forEach array method
 buttons.forEach((button) => button.addEventListener('click', startTimer));
+
+document.customForm.addEventListener('submit', function (e) {
+  e.preventDefault();
+  const mins = this.minutes.value;
+  console.log(mins);
+  timer(mins * 60);
+  this.reset();
+});
