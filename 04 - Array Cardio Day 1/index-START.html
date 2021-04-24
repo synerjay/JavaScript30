@@ -39,6 +39,22 @@
       });
       console.log(firstLast);
 
+      // sort the inventors age from oldest to youngest
+
+      const ordered = inventors.sort(function (a, b) {
+        if (a.year > b.year) {
+          return 1; // ascending order
+        } else {
+          return -1;
+        }
+      });
+      console.log(ordered);
+
+      const totalAnal = inventors.reduce((total, inventor) => {
+        return total + (inventor.passed - inventor.year);
+      }, 0); // <-- zero being the total start ZERO. VERY IMPORTANT!!!!
+      console.log(totalAnal);
+
       const people = [
         'Bernhard, Sandra',
         'Bethea, Erin',
