@@ -48,12 +48,23 @@
           return -1;
         }
       });
-      console.log(ordered);
+      console.table(ordered);
 
       const totalAnal = inventors.reduce((total, inventor) => {
         return total + (inventor.passed - inventor.year);
       }, 0); // <-- zero being the total start ZERO. VERY IMPORTANT!!!!
       console.log(totalAnal);
+
+      // sort the inventors by years lived
+
+      const sortManyLives = inventors.sort((a, b) => {
+        const lastGuy = a.passed - a.year;
+        const nextGuy = b.passed - b.year;
+
+        return lastGuy > nextGuy ? -1 : 1;
+      });
+
+      console.table(sortManyLives);
 
       const people = [
         'Bernhard, Sandra',
