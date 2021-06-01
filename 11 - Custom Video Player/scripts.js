@@ -53,9 +53,8 @@ function handleProgress() {
 function scrub(e) {
   // progress bar width is found in the progress.offsetWidth
   //e.offsetX is the position of the click event on the progress bar
-  console.dir(progress);
-  const scrubTime = (e.offsetX / progress.offsetWidth) * video.duration;
-  video.currentTime = scrubTime;
+  // const scrubTime = (e.offsetX / progress.offsetWidth) * video.duration;
+  // video.currentTime = scrubTime;
   console.log(e);
 }
 
