@@ -30,46 +30,46 @@
       // to get the current year you put make Date() object
 
       const yearNow = new Date().getFullYear();
-      console.log(yearNow);
+      // console.log(yearNow);
 
       const someBoolean = people.some((person) => yearNow - person.year >= 19);
-      console.log(someBoolean);
+      // console.log(someBoolean);
 
       const everyBoolean = people.every(
         (person) => yearNow - person.year >= 19
       );
-      console.log(everyBoolean);
+      // console.log(everyBoolean);
 
       // Array.prototype.some() // is at least one person 19 or older?
       currentYear = new Date().getFullYear();
-      console.log(currentYear);
+      // console.log(currentYear);
 
       const someOrNot = people.some(
         (people) => currentYear - people.year >= 19
       );
-      console.log(someOrNot);
+      // console.log(someOrNot);
       // Array.prototype.every() // is everyone 19 or older?
 
       const everyOrNot = people.every(
         (people) => currentYear - people.year >= 19
       );
-      console.log(everyOrNot);
+      //console.log(everyOrNot);
 
       // Array.prototype.find()
       // Find is like filter, but instead returns just the one you are looking for
       // find the comment with the ID of 823423
 
       const findIdNumber = comments.find((comment) => comment.id == 823423);
-      console.log(findIdNumber);
+      // console.log(findIdNumber);
 
       const findId = comments.find((comment) => comment.id === 823423);
-      console.log(findId);
+      // console.log(findId);
 
       // Array.prototype.findIndex()
       // Find the comment with this ID
       // delete the comment with the ID of 823423
       const index = comments.findIndex((comment) => comment.id === 823423);
-      console.log(index);
+      // console.log(index);
 
       // comments.splice(index, 1); // splice mutates the original array, it takes in the location to be removed and the number of items being remove
       // .slice() method doesnt mutate the original array but instead return a new array
@@ -81,9 +81,9 @@
       ];
 
       const spreadArray = [...comments.slice(index + 1)];
-      console.table(spreadArray);
-      console.table(comments);
-      console.table(newComments);
+      //console.table(spreadArray);
+      //console.table(comments);
+      //console.table(newComments);
 
       const lineItemsArray = [
         {
@@ -144,9 +144,42 @@
 
       const newObject = convertArrayToObject(lineItemsArray, 'id');
 
-      console.log(lineItemsArray);
+      //console.log(lineItemsArray);
 
-      console.log(newObject);
+      // console.log(newObject);
+
+      var ias_build_params;
+
+      ias_build_params = function (params, concat_str) {
+        if (Object.keys(params).length == 0) {
+          if (concat_str.length > 0)
+            return concat_str.substring(0, concat_str.length - 1);
+          else return concat_str;
+        } else {
+          var key_current = Object.keys(params)[0];
+          var val_current = params[Object.keys(params)[0]];
+          delete params[key_current];
+          return ias_build_params(
+            params,
+            concat_str + key_current + '=' + val_current + '&'
+          );
+        }
+      };
+
+      var ias_params = {
+        anId: 925755,
+        campId: '${CREATIVE_SIZE}',
+        pubId: '${ADV_ID}',
+        chanId: '${TAG_ID}',
+        placementId: '${CPG_ID}',
+        pubcCreative: '${CREATIVE_ID}',
+        pubOrder: '${IO_ID}',
+        cb: '${CACHEBUSTER}',
+        custom: '${SITE_ID}',
+      };
+
+      var result = ias_build_params(ias_params, '');
+      console.log(result);
     </script>
   </body>
 </html>
